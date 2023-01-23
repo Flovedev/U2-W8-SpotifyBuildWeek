@@ -4,14 +4,31 @@ body {
     background-color: #181818;
 }
 
-#top-content {}
+#top-content {
+    max-height: 88vh;
+}
 
 #navbar-left {
     width: 230px;
     color: #A3A39B;
     background-color: #000000;
-    position: relative;
     overflow: hidden;
+}
+
+#navbar-left div:nth-child(-n+3) div:hover {
+    cursor: pointer;
+    background-color: #282828;
+    color: white;
+}
+
+#navbar-left li:hover {
+    cursor: pointer;
+    color: white;
+}
+
+#navbar-left div:last-of-type div:last-of-type:hover {
+    cursor: pointer;
+    color: white;
 }
 
 #navbar-left>div:nth-child(2) {
@@ -28,20 +45,21 @@ body {
     font-weight: bolder;
 }
 
-ul {
+#navbar-left div div>:last-of-type {
+    /* background-color: red; */
+}
+
+#navbar-left ul {
     color: #808080;
     list-style-type: none;
 }
 
 #navbar-left>div:last-of-type>div:first-of-type {
     overflow-y: auto;
-
 }
 
 #navbar-left>div:last-of-type>div:last-of-type {
     background-color: #000000;
-    position: absolute;
-    bottom: 1px;
 }
 
 .selected {
@@ -50,14 +68,35 @@ ul {
 }
 
 #bottom-bar {
-    height: 12vh;
-    color: #FFFFFF;
+    height: 10vh;
+    color: #A3A39B;
     background-color: #181818;
+}
+
+#bottom-bar p,
+span {
+    color: #FFFFFF;
+    font-size: small;
 }
 
 #bottom-bar img {
     width: 60px;
     height: 60px;
+}
+
+#bottom-bar span {
+    font-size: smaller;
+    color: #B2ABA5;
+}
+
+#bottom-bar p:hover,
+span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#bottom-bar svg:hover {
+    color: white;
 }
 
 #main {
