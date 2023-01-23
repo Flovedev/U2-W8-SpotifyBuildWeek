@@ -20,7 +20,7 @@
     <title>Albums</title>
   </head>
   <div class="container-fluid album-header">
-    <div class="row mx-5 pt-3">
+    <div class="row mx-5 pt-3 top-navbar">
       <div class="arrows"><i class="bi bi-arrow-left-short"></i></div>
       <div class="arrows ml-4"><i class="bi bi-arrow-right-short"></i></div>
       <div class="dropdown ml-auto">
@@ -67,7 +67,7 @@
         </div>
       </div>
     </div>
-    <div class="row mx-5 mt-5">
+    <div class="row mx-5 pt-5" id="album-row">
       <div class="col-lg-3 px-0">
         <img
           src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.FTUVprq93uhs5Dhlb-A-2QHaHa%26pid%3DApi&f=1&ipt=94f9f4ac0f6f10f5481d5a110451c7356b2d59221b390db901fc1202f4a06aca&ipo=images"
@@ -105,14 +105,13 @@
   <div class="row mx-5 mt-5">
     <table class="table table-borderless">
       <thead>
-        <tr class="">
+        <tr class="album-navbar" id="album-navbar">
           <th class="col-lg-1">#</th>
           <th class="col-lg-5">TITLE</th>
           <th class="col-lg-5">PLAYS</th>
           <th class="col-lg-1"><i class="bi bi-clock"></i></th>
         </tr>
       </thead>
-
       <tbody>
         <tr>
           <th scope="row">1</th>
@@ -213,11 +212,6 @@
       </tbody>
     </table>
   </div>
-  <audio controls>
-    <source src="horse.ogg" type="audio/ogg" />
-    <source src="horse.mp3" type="audio/mpeg" />
-    Your browser does not support the audio tag.
-  </audio>
   <div class="row mx-5 mt-5 album-info d-flex flex-column">
     <p class="mb-0">March 23, 1979</p>
     <p class="mb-0">© 1979 Warner Records Inc.</p>
@@ -270,5 +264,6 @@
       integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
       crossorigin="anonymous"
     ></script>
+    <script src="./Scripts/album.js"></script>
   </body>
 </html>
