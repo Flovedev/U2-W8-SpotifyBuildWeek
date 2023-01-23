@@ -100,5 +100,5 @@ span:hover {
 }
 
 #main {
-    background-color: green;
+    overflow: auto;
 }
