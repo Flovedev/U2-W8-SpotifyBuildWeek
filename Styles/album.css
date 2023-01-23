@@ -280,7 +280,7 @@ body {
  position: relative;
 }
 
-.top-navbar {
+#top-navbar {
     position: -webkit-sticky;
     position: fixed;
     top: 0;
@@ -291,7 +291,7 @@ body {
 
 .album-navbar {
     position: sticky;
-    top: 0;
+    top: 75px;
     z-index: 1;
     transition: all 300ms;
 }
@@ -304,6 +304,6 @@ body {
     margin-left: auto;
 }
 
-.album-row {
-    padding-top: 500px !important;
+#album-row {
+    padding-top: 50px !important;
 }
