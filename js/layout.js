@@ -1,7 +1,7 @@
 const url = "https://striveschool-api.herokuapp.com/api/deezer/artist/"
 
 const params = new URLSearchParams(location.search)
-const id = params.get("id")
+const id = params.get("artist")
 
 let artistNode = document.getElementById("main")
 
@@ -89,9 +89,9 @@ const getTracklist = async () => {
                 tracksNode.innerHTML += `
                     <tr>
                         <th scope="col">${index + 1}</th>
-                        <th scope="col"><img src="${element.album.cover}" alt=""></th>
+                        <th scope="col"><a href='./album.html?album=${element.album.id}'><img src="${element.album.cover}" alt=""></a></th>
                         <th scope="col">${element.title}</th>
-                        <th scope="col">${element.id}</th>
+                        <th scope="col">${element.album.id}</th>
                         <th scope="col">${Math.floor(element.duration / 60 * 100) / 100}</th>
                     </tr>`
             });
