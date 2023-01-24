@@ -28,7 +28,7 @@ const urlAlbum =  "https://striveschool-api.herokuapp.com/api/deezer/album/"
 const urlArtist = "https://striveschool-api.herokuapp.com/api/deezer/artist/"
 const urlSearch = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
 
-const urlAlbumID = "265655342"
+const urlAlbumID = "9884672"
 const urlArtistID = "1168"
 const searchQuery = "van-halen"
 let artistID;
@@ -107,7 +107,6 @@ const renderAlbum = async (data) => {
     let seconds = albumDuration - minutes*60
    
     albumDurationLocation.innerText = minutes + " min " + seconds + " sec";
-
     albumTitle.innerText = data.title
     albumTypeLocation.innerText = albumTypeFinal;
 
