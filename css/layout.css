@@ -111,9 +111,20 @@ span {
     color: white;
 }
 
+#artist-jumbotron {
+    height: 42vh;
+    /* background-image: url("https://www.udiscovermusic.com/wp-content/uploads/2019/03/Queen-II-album-cover-820.jpg"); */
+    background-size: cover;
+    color: white;
+}
+
 #artist-content th img {
     width: 40px;
     height: 40px;
+}
+
+#artist-content tr>th:nth-last-child(-n+2) {
+    color: #808080;
 }
 
 #artist-pick img {
