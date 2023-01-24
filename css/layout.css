@@ -5,7 +5,7 @@ body {
 }
 
 #top-content {
-    max-height: 88vh;
+    height: 88vh;
 }
 
 #navbar-left {
@@ -26,7 +26,7 @@ body {
     color: white;
 }
 
-#navbar-left div:last-of-type div:last-of-type:hover {
+#navbar-left div:last-of-type:hover {
     cursor: pointer;
     color: white;
 }
@@ -90,7 +90,7 @@ span {
 }
 
 #bottom-bar p:hover,
-span:hover {
+#bottom-bar span:hover {
     cursor: pointer;
     text-decoration: underline;
 }
@@ -101,4 +101,32 @@ span:hover {
 
 #main {
     overflow: auto;
+}
+
+#player-displayer {
+    width: 55vh;
+}
+
+#artist-content {
+    color: white;
+}
+
+#artist-content th img {
+    width: 40px;
+    height: 40px;
+}
+
+#artist-pick img {
+    width: 70px;
+    height: 70px;
+}
+
+#artist-pick div div img {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+#artist-pick span {
+    color: #808080;
 }
