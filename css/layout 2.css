@@ -1,0 +1,143 @@
+body {
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #181818;
+}
+
+#top-content {
+    height: 88vh;
+}
+
+#navbar-left {
+    width: 230px;
+    color: #A3A39B;
+    background-color: #000000;
+    overflow: hidden;
+}
+
+#navbar-left div:nth-child(-n+3) div:hover {
+    cursor: pointer;
+    background-color: #282828;
+    color: white;
+}
+
+#navbar-left li:hover {
+    cursor: pointer;
+    color: white;
+}
+
+#navbar-left div:last-of-type:hover {
+    cursor: pointer;
+    color: white;
+}
+
+#navbar-left>div:nth-child(2) {
+    font-size: small;
+}
+
+#navbar-left>div:nth-child(3) {
+    font-size: small;
+}
+
+#navbar-left>div:first-of-type {
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#navbar-left div div>:last-of-type {
+    /* background-color: red; */
+}
+
+#navbar-left ul {
+    color: #808080;
+    list-style-type: none;
+}
+
+#navbar-left>div:last-of-type>div:first-of-type {
+    overflow-y: auto;
+}
+
+#navbar-left>div:last-of-type>div:last-of-type {
+    background-color: #000000;
+}
+
+.selected {
+    background-color: #282828;
+    color: white;
+}
+
+#bottom-bar {
+    height: 10vh;
+    color: #A3A39B;
+    background-color: #181818;
+}
+
+#bottom-bar p,
+span {
+    color: #FFFFFF;
+    font-size: small;
+}
+
+#bottom-bar img {
+    width: 60px;
+    height: 60px;
+}
+
+#bottom-bar span {
+    font-size: smaller;
+    color: #B2ABA5;
+}
+
+#bottom-bar p:hover,
+#bottom-bar span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#bottom-bar svg:hover {
+    color: white;
+}
+
+#main {
+    overflow: auto;
+}
+
+#player-displayer {
+    width: 55vh;
+}
+
+#artist-content {
+    color: white;
+}
+
+#artist-jumbotron {
+    height: 42vh;
+    /* background-image: url("https://www.udiscovermusic.com/wp-content/uploads/2019/03/Queen-II-album-cover-820.jpg"); */
+    background-size: cover;
+    color: white;
+}
+
+#artist-content th img {
+    width: 40px;
+    height: 40px;
+}
+
+#artist-content tr>th:nth-last-child(-n+2) {
+    color: #808080;
+}
+
+#artist-pick img {
+    width: 70px;
+    height: 70px;
+}
+
+#artist-pick div div img {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+#artist-pick span {
+    color: #808080;
+}
