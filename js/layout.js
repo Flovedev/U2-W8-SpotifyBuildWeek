@@ -7,7 +7,7 @@ let artistNode = document.getElementById("main")
 
 window.onload = async () => {
     try {
-        let res = await fetch(url + 1168)
+        let res = await fetch(url + id)
         let resJson = await res.json()
         if (res.ok) {
             console.log(resJson)
