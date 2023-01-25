@@ -16,7 +16,7 @@ const getData = async () => {
 		let res = await fetch(url + 'Van Halen', options);
 		let data = await res.json();
 
-	} catch(error) {
+	} catch (error) {
 		console.log(error);
 	}
 };
@@ -28,7 +28,7 @@ const songCardNode = document.getElementById("song-card-container");
 window.onload = async () => {
 	try {
 		let res = await fetch(url + 'Oasis', options);
-	    let potato = await res.json();
+		let potato = await res.json();
 		let potatojson = potato.data
 		console.log(potatojson)
 
@@ -39,18 +39,18 @@ window.onload = async () => {
 			const element = potatojson[i];
 			if (albumNames.includes(element.album.title)) {
 				console.log();
-			}else {
+			} else {
 				albumNames.push(element.album.title)
 				albumImg.push(element.album.cover_medium)
 			}
-			}
+		}
 
-			console.log(albumNames)
+		console.log(albumNames)
 
 		for (let i = 0; i < albumNames.length; i++) {
-			
+
 			let element = potatojson[i];
-			
+
 			albumCardNode.innerHTML += `<div class="col-lg">
 			<div class="card mb-3" style="width: 258px; background-color: #312728;">
 				<div class="row no-gutters">
@@ -76,14 +76,14 @@ window.onload = async () => {
 				</div>
 			</div>
 		</div>`
-	}
+		}
 
 
 
-	for (let i = 0; i < 14; i++) {
-		let element = potatojson[i];
-		
-		songCardNode.innerHTML += `<div class="col">
+		for (let i = 0; i < 14; i++) {
+			let element = potatojson[i];
+
+			songCardNode.innerHTML += `<div class="col">
 		<div class="card" style="width: 150px;">
 			<img id="recently-played-card-img1" class="card-img-top p-2"
 				src="${element.album.cover_medium}"
@@ -104,8 +104,8 @@ window.onload = async () => {
 			</div>
 		</div>
 	</div>`
-	}
-    } catch (error) {
+		}
+	} catch (error) {
 		console.log(error);
 	}
 };
