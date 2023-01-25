@@ -1,0 +1,80 @@
+#top-logo {
+    height: 80px;
+}
+
+.container-fluid {
+    border-bottom: 1px solid rgb(216, 216, 216);
+}
+
+#facebook-button {
+    background-color: rgb(65, 90, 152);
+    width: 400px;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+}
+
+#apple-button {
+    background-color: black;
+    width: 400px;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+}
+
+.middle-row {
+    width: 400px;
+}
+
+.or {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.input-section {
+    width: 400px;
+}
+
+.inputs {
+    height: 40px;
+    padding-left: 10px;
+    border: 1px solid rgb(216, 216, 216);
+}
+
+.remember-login {
+    width: 400px;
+}
+
+.login-button {
+    border: none;
+    border-radius: 25px;
+    background-color: rgb(75, 183, 84);
+    font-size: 12px;
+    font-weight: 700;
+    height: 40px;
+}
+
+.seperator {
+    width: 400px;
+}
+
+.sign-up {
+    width: 400px;
+    background-color: transparent;
+    color:rgb(103, 103, 103);
+    border: 1px solid rgb(99, 99, 99);
+}
+
+.disclaimer {
+    width: 400px;
+    font-size: 10px;
+    color: rgb(196, 196, 196);
+}
+
+.green-text {
+    color:rgb(75, 183, 84);
+}
+
+.password {
+    color:rgb(75, 183, 84);
+}
