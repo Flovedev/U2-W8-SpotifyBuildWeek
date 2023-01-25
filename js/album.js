@@ -1,11 +1,11 @@
 const params = new URLSearchParams(location.search)
-const id = params.get("id")
+const id = params.get("album")
 
 function changeNavbarBG() {
     let navbar = document.getElementById("album-navbar")
     let topbar = document.getElementById("top-navbar")
     let scrollValue = window.scrollY;
-    console.log(scrollValue)
+
     if (scrollValue < 405) {
         navbar.classList.remove("album-navbar-bg")
         topbar.classList.remove("album-navbar-bg")
@@ -16,15 +16,15 @@ function changeNavbarBG() {
 }
 
 const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '46d53ca825mshdd391743c09b9f9p1a0923jsnbfa4ad16632f',
-		'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
-	}
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': '46d53ca825mshdd391743c09b9f9p1a0923jsnbfa4ad16632f',
+        'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+    }
 };
 
 
-const urlAlbum =  "https://striveschool-api.herokuapp.com/api/deezer/album/"
+const urlAlbum = "https://striveschool-api.herokuapp.com/api/deezer/album/"
 const urlArtist = "https://striveschool-api.herokuapp.com/api/deezer/artist/"
 const urlSearch = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
 
@@ -35,7 +35,7 @@ let artistID;
 
 const getAlbumData = async () => {
     try {
-        const res = await fetch(urlAlbum + urlAlbumID, options)
+        const res = await fetch(urlAlbum + id, options)
         const data = await res.json()
         console.log(data)
         renderAlbum(data)
@@ -57,7 +57,7 @@ const getSearchData = async () => {
     try {
         const res = await fetch(urlSearch + searchQuery, options)
         const data = await res.json()
-        
+
     } catch (error) {
         console.log(error)
     }
@@ -82,29 +82,29 @@ const renderAlbum = async (data) => {
     let albumTypeFirstLetterUppercase = albumTypeFirstLetter.toUpperCase()
     let albumTypeRemainingLetters = albumType.substring(1)
     let albumTypeFinal = albumTypeFirstLetterUppercase + albumTypeRemainingLetters
-    
+
     albumCover.setAttribute("src", data.cover_big)
     artistImage.setAttribute("src", data.artist.picture_big)
-    artistTitle.setAttribute("href", `./artist.html?id=${data.artist.id}`)
+    artistTitle.setAttribute("href", `./artist.html?artist=${data.artist.id}`)
     artistTitle.innerText = data.artist.name
-    albumYear.innerText = data.release_date.slice(0,4)
+    albumYear.innerText = data.release_date.slice(0, 4)
     albumTracks.innerText = data.nb_tracks + " Songs"
 
     let albumDateRaw = data.release_date;
-    let albumDateYear = albumDateRaw.slice(0,4)
-    let albumDateMonth = albumDateRaw.slice(5,7)
+    let albumDateYear = albumDateRaw.slice(0, 4)
+    let albumDateMonth = albumDateRaw.slice(5, 7)
     let albumDateDay = albumDateRaw.slice(8)
     let arrayOfMonths = [
-        "January","February","March","April","May","June","July","August","September","October","November","December"
+        "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
     ]
-    
-    albumDate.innerText = arrayOfMonths[albumDateMonth-1] + " " + albumDateDay + ", " + albumDateYear;
-    
+
+    albumDate.innerText = arrayOfMonths[albumDateMonth - 1] + " " + albumDateDay + ", " + albumDateYear;
+
 
     let albumDuration = data.duration;
-    let minutes = Math.floor(albumDuration/60)
-    let seconds = albumDuration - minutes*60
-   
+    let minutes = Math.floor(albumDuration / 60)
+    let seconds = albumDuration - minutes * 60
+
     albumDurationLocation.innerText = minutes + " min " + seconds + " sec";
     albumTitle.innerText = data.title
     albumTypeLocation.innerText = albumTypeFinal;
@@ -112,11 +112,10 @@ const renderAlbum = async (data) => {
     let trackNumber = 1;
     let container = document.getElementById("tracklist")
 
-    for (let i = 0;i<data.tracks.data.length; i++)
-    {
-        
+    for (let i = 0; i < data.tracks.data.length; i++) {
+
         let row = document.createElement("tr")
-        
+
         let trackNumberHash = document.createElement("th")
         trackNumberHash.innerText = trackNumber;
 
@@ -126,15 +125,15 @@ const renderAlbum = async (data) => {
         let artistNameP = document.createElement("p")
         let artistNameA = document.createElement("a")
         artistNameA.innerText = data.tracks.data[i].artist.name
-        artistNameA.setAttribute("href", `./artist.html?id=${data.tracks.data[i].artist.id}`)
+        artistNameA.setAttribute("href", `./artist.html?artist=${data.tracks.data[i].artist.id}`)
         artistNameP.appendChild(artistNameA)
-        
+
 
         let trackDuration = document.createElement("td")
 
         let trackDurationRaw = data.tracks.data[i].duration
-        let minutes = Math.floor(trackDurationRaw/60)
-        let seconds = trackDurationRaw - minutes*60
+        let minutes = Math.floor(trackDurationRaw / 60)
+        let seconds = trackDurationRaw - minutes * 60
         let trackDurationRawInMinSec = minutes + ":" + seconds;
         trackDuration.innerText = trackDurationRawInMinSec;
 
