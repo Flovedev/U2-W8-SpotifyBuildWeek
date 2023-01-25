@@ -1,4 +1,141 @@
-const options = {
+/*const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '7f02b8b79bmshbf21a2cbe7b2fabp1c80c9jsn86f616a6d1cc',
+		'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+	}
+};
+
+function getArtistData(query, index) {
+    fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=' + query, options)
+    .then(response => response.json())
+    .then(response => {
+        const items = response.data;
+        items.forEach(item => {
+            const cardImg = document.querySelectorAll(`#good-morning-card-img${index+1}`);
+            cardImg.forEach((img) => {
+                img.src = img.album.cover_medium;
+            });
+
+            const cardArtist = document.querySelectorAll(`#good-morning-card-artist${index+1}`);
+            cardArtist.forEach((name) => {
+                name.innerText = name.artist.name;
+            });
+        });
+    }).catch(err => console.error(err));
+}
+
+const artistQueries = ['Coldplay', 'The Beatles', 'Queen', 'Pink Floyd', 'Fleetwood Mac', 'Iron Maiden', 'Black Sabbath', 'AC/DC', 'Taylor Swift', 'Frank Ocean'];
+
+for (let i = 0; i < artistQueries.length; i++) {
+    getArtistData(artistQueries[i], i);
+}
+
+function getAlbumData(query, index) {
+    fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=' + query, options)
+    .then(response => response.json())
+    .then(response => {
+        const items = response.data;
+        items.forEach(item => {
+            const cardImg = document.querySelectorAll(`#recently-played-card-img${index+1}`);
+            cardImg.forEach((img, i) => {
+                img.src = items[i].album.cover_medium;
+            });
+
+            const cardTitle = document.querySelectorAll(`#recently-played-card-title${index+1}`);
+            cardTitle.forEach((title, i) => {
+                title.innerText = items[i].album.title
+            });
+
+            const cardArtist = document.querySelectorAll(`#recently-played-card-artist${index+1}`);
+            cardArtist.forEach((name, i) => {
+                name.innerText = items[i].artist.name;
+            });
+        });
+    }).catch(err => console.error(err));
+}
+
+const albumQueries = ['Eminem', 'Van Halen', 'Oasis', 'Dr Dre', 'Radiohead', 'The Weekend', 'Brent Faiyaz', 'Adele'];
+
+for (let i = 0; i < albumQueries.length; i++) {
+    getAlbumData(albumQueries[i], i);
+}
+
+function getShowData(query, index) {
+    fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=' + query, options)
+    .then(response => response.json())
+    .then(response => {
+        const items = response.data;
+        items.forEach(item => {
+            const cardImg = document.querySelectorAll(`#shows-card-img${index+1}`);
+            cardImg.forEach((img, i) => {
+                img.src = items[i].album.cover_medium;
+            });
+
+            const cardTitle = document.querySelectorAll(`#shows-card-title${index+1}`);
+            cardTitle.forEach((title, i) => {
+                title.innerText = items[i].album.title
+            });
+
+            const cardArtist = document.querySelectorAll(`#show-card-artist${index+1}`);
+            cardArtist.forEach((name, i) => {
+                name.innerText = items[i].artist.name;
+            });
+        });
+    }).catch(err => console.error(err));
+}
+
+const showQueries = ['No Such Thing As A Fish', 'Power Pizza', 'Demoni Urbani', 'Daily Cogito', 'Locanda Del Drag', 'Mindfulness in Vo', 'Mitologia: le mera', 'Podcast'];
+
+for (let i = 0; i < showQueries.length; i++) {
+    getShowData(showQueries[i], i);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*const options = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '7f02b8b79bmshbf21a2cbe7b2fabp1c80c9jsn86f616a6d1cc',
@@ -425,7 +562,7 @@ getDataBrentFaiyaz("Brent Faiyaz"),
 getDataAdele("Adele")
 }
 
-
+*/
 
 
 
