@@ -1,4 +1,4 @@
-/*const options = {
+const options = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '7f02b8b79bmshbf21a2cbe7b2fabp1c80c9jsn86f616a6d1cc',
