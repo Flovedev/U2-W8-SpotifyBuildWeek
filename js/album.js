@@ -5,7 +5,7 @@ function changeNavbarBG() {
     let navbar = document.getElementById("album-navbar")
     let topbar = document.getElementById("top-navbar")
     let scrollValue = window.scrollY;
-    
+    console.log(scrollValue)
     if (scrollValue < 405) {
         navbar.classList.remove("album-navbar-bg")
         topbar.classList.remove("album-navbar-bg")
