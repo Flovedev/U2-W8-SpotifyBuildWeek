@@ -37,6 +37,7 @@ const getAlbumData = async () => {
     try {
         const res = await fetch(urlAlbum + id, options)
         const data = await res.json()
+        console.log(data)
         renderAlbum(data)
     } catch (error) {
         console.log(error)
@@ -47,7 +48,6 @@ const getArtistData = async () => {
     try {
         const res = await fetch(urlArtist + urlArtistID, options)
         const data = await res.json()
-        console.log(data)
     } catch (error) {
         console.log(error)
     }
@@ -57,7 +57,7 @@ const getSearchData = async () => {
     try {
         const res = await fetch(urlSearch + searchQuery, options)
         const data = await res.json()
-        console.log(data)
+        
     } catch (error) {
         console.log(error)
     }
@@ -66,7 +66,6 @@ const getSearchData = async () => {
 window.addEventListener("scroll", changeNavbarBG)
 
 const renderAlbum = async (data) => {
-    console.log(data)
 
     let albumCover = document.getElementById("album-cover")
     let artistImage = document.getElementById("artist-image")
@@ -148,5 +147,7 @@ const renderAlbum = async (data) => {
 }
 
 window.onload = (
-    getAlbumData()
+    getAlbumData(),
+    changeNavbarBG(),
+    getSearchData()
 )
