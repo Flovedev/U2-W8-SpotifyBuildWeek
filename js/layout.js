@@ -95,12 +95,18 @@ const getTracklist = async () => {
                         <th scope="col">${Math.floor(element.duration / 60 * 100) / 100}</th>
                     </tr>`
             });
-
-
         } else {
             console.log(res)
         }
     } catch (err) {
         console.log(err)
+    }
+}
+
+
+const searchArtist = (event) => {
+    const input = event.target.value
+    if (event.key === "Enter") {
+        console.log(`I Have to render ${input}`)
     }
 }
