@@ -8,8 +8,8 @@ const options = {
 };
 
 const params = new URLSearchParams(location.search)
-// const id = params.get("artist")
-const id = "972"
+const id = params.get("artist")
+// const id = "972"
 
 let artistNode = document.getElementById("main")
 

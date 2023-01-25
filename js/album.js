@@ -57,7 +57,7 @@ const getSearchData = async () => {
     try {
         const res = await fetch(urlSearch + searchQuery, options)
         const data = await res.json()
-        
+
     } catch (error) {
         console.log(error)
     }

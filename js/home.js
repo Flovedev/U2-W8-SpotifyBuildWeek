@@ -2,7 +2,8 @@ const url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=";
 
 const urlArtist = "https://striveschool-api.herokuapp.com/api/deezer/artist/"
 
-const artistQueries = ['Coldplay', 'The Beatles', 'Queen', 'Pink Floyd', 'Fleetwood Mac', 'Iron Maiden', 'Black Sabbath', 'AC/DC', 'Taylor Swift', 'Frank Ocean'];
+const params = new URLSearchParams(location.search)
+const id = params.get("artist")
 
 const options = {
 	headers: {
@@ -27,7 +28,7 @@ const songCardNode = document.getElementById("song-card-container");
 
 window.onload = async () => {
 	try {
-		let res = await fetch(url + 'Oasis', options);
+		let res = await fetch(url + id, options);
 		let potato = await res.json();
 		let potatojson = potato.data
 		console.log(potatojson)
@@ -38,7 +39,7 @@ window.onload = async () => {
 		for (let i = 0; i < potatojson.length; i++) {
 			const element = potatojson[i];
 			if (albumNames.includes(element.album.title)) {
-				console.log();
+
 			} else {
 				albumNames.push(element.album.title)
 				albumImg.push(element.album.cover_medium)
@@ -51,7 +52,7 @@ window.onload = async () => {
 
 			let element = potatojson[i];
 
-			albumCardNode.innerHTML += `<div class="col-lg">
+			albumCardNode.innerHTML += `<a href="./album.html?album=${element.album.id}"><div class="col-lg">
 			<div class="card mb-3" style="width: 258px; background-color: #312728;">
 				<div class="row no-gutters">
 					<div class="col-4 d-inline-block">
@@ -75,7 +76,8 @@ window.onload = async () => {
 					</div>
 				</div>
 			</div>
-		</div>`
+		</div>
+		</a>`
 		}
 
 
