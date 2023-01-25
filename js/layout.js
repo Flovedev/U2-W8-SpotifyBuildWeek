@@ -1,13 +1,21 @@
 const url = "https://striveschool-api.herokuapp.com/api/deezer/artist/"
 
+const options = {
+    headers: {
+        'X-RapidAPI-Key': '46d53ca825mshdd391743c09b9f9p1a0923jsnbfa4ad16632f',
+        'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+    }
+};
+
 const params = new URLSearchParams(location.search)
-const id = params.get("artist")
+// const id = params.get("artist")
+const id = "972"
 
 let artistNode = document.getElementById("main")
 
 window.onload = async () => {
     try {
-        let res = await fetch(url + id)
+        let res = await fetch(url + id, options)
         let resJson = await res.json()
         if (res.ok) {
             console.log(resJson)
@@ -79,7 +87,7 @@ window.onload = async () => {
 const getTracklist = async () => {
     try {
         let tracksNode = document.getElementById("artist-tracks")
-        let res = await fetch(url + 1168 + "/top?limit=5")
+        let res = await fetch(url + id + "/top?limit=5", options)
         let resJson = await res.json()
         let resData = resJson.data
         if (res.ok) {
@@ -109,4 +117,17 @@ const searchArtist = (event) => {
     if (event.key === "Enter") {
         console.log(`I Have to render ${input}`)
     }
+}
+
+const searchAlbum = (event) => {
+    const input = event.target.value
+    if (input.length > 3) {
+        console.log(`I have to render ${input}`)
+    }
+}
+
+const addToSaved = (event) => {
+    const savedNode = document.getElementById('saved-songs')
+    const title = event
+    savedNode.innerHTML += `<li class="px-1 text-truncate">${title}</li>`
 }
