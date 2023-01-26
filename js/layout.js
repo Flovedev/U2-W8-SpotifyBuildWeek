@@ -124,9 +124,3 @@ const searchAlbum = (event) => {
         console.log(`I have to render ${input}`)
     }
 }
-
-const addToSaved = (event) => {
-    const savedNode = document.getElementById('saved-songs')
-    const title = event
-    savedNode.innerHTML += `<li class="px-1 text-truncate">${title}</li>`
-}

@@ -25,6 +25,8 @@ const getData = async () => {
 const albumCardNode = document.getElementById("album-card-container");
 const songCardNode = document.getElementById("song-card-container");
 
+let albumNames = [];
+let albumImg = [];
 
 window.onload = async () => {
 	try {
@@ -33,8 +35,7 @@ window.onload = async () => {
 		let potatojson = potato.data
 		console.log(potatojson)
 
-		let albumNames = [];
-		let albumImg = [];
+
 
 		for (let i = 0; i < potatojson.length; i++) {
 			const element = potatojson[i];
@@ -118,4 +119,18 @@ const searchArtist = (event) => {
 	if (event.key === "Enter") {
 		window.location.href = `./index.html?artist=${input}`;
 	}
+}
+
+const searchAlbum = (event) => {
+	const albumsNode = document.getElementById("first-container")
+	const input = event.target.value
+	if (input.length > 3) {
+		albumsNode.innerHTML = `<p>${findAlbumById(input)}</p>`
+	} else if (input.length === 0) {
+		albumsNode.innerHTML = `<p>${"emtpy"}</p>`
+	}
+}
+
+const findAlbumById = (albumId) => {
+	return albumNames.find((album) => album.asin === albumId)
 }
