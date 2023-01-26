@@ -92,39 +92,47 @@ const getTracklist = async () => {
         let resData = resJson.data
         if (res.ok) {
             console.log(resData)
-
+            
             resData.forEach(function callback(element, index) {
                 tracksNode.innerHTML += `
-                    <tr class="numbers">
-                        <th scope="col">${index + 1}</th>
+                    <tr>
+                        <th scope="col" class="numbers-track">${index + 1}</th>
                         <th scope="col"><a href='./album.html?album=${element.album.id}'><img src="${element.album.cover}" alt=""></a></th>
                         <th scope="col">${element.title}</th>
                         <th scope="col">${element.album.id}</th>
                         <th scope="col">${Math.floor(element.duration / 60 * 100) / 100}</th>
                     </tr>`
+                    
             });
+            changeBottom(resData)
         } else {
             console.log(res)
         }
     } catch (err) {
         console.log(err)
     }
+    
 }
 
 function changeBottom(data) {
-    let albumArt = document.getElementById("album-cover-mini")
-    let songName = document.getElementById("song-name-bottom")
     let artistName = document.getElementById("artist-name-bottom")
-    let audioPlayer = document.getElementById("audio-player")
+    artistName.innerText = data[0].artist.name
 
-    albumArt.setAttribute("src", data.cover_big)
-    artistName.innerText = data.artist.name
+    let songNameContainer = document.getElementById("song-name-bottom")
+    let albumArtContainer = document.getElementById("album-cover-mini")
+    let numbersToChange = document.querySelectorAll(".numbers-track")
+    let audioPlayerContainer = document.getElementById("audio-player")
 
-    let numbers = document.querySelectorAll(".numbers")
-    for (let i = 0; i < numbers.length; i++) {
-        numbers[i].addEventListener("click", function () {
-            songName.innerText = data.tracks.data[i].title
-            audioPlayer.setAttribute("src", data.tracks.data[i].preview)
+    console.log(numbersToChange)
+    
+    
+    
+    for (let i = 0; i < numbersToChange.length; i++) {
+            console.log(numbersToChange[i])
+            numbersToChange[i].addEventListener("click", function () {
+            songNameContainer.innerText = data[i].title
+            audioPlayerContainer.setAttribute("src", data[i].preview)
+            albumArtContainer.setAttribute("src", data[i].album.cover_big)
         })
     }
 }

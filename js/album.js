@@ -53,6 +53,7 @@ const getArtistData = async () => {
     try {
         const res = await fetch(urlArtist + urlArtistID, options)
         const data = await res.json()
+        console.log(data)
     } catch (error) {
         console.log(error)
     }
