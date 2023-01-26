@@ -40,6 +40,7 @@ window.onload = async () => {
 
 		let albumNames = [];
 		let albumImg = [];
+		let albumId = [];
 
 		for (let i = 0; i < potatojson.length; i++) {
 			const element = potatojson[i];
@@ -48,6 +49,7 @@ window.onload = async () => {
 			} else {
 				albumNames.push(element.album.title)
 				albumImg.push(element.album.cover_medium)
+				albumId.push(element.album.id)
 			}
 		}
 
@@ -94,7 +96,7 @@ window.onload = async () => {
 		if(i < 6) {
 			let element = potatojson[i];
 
-		albumCardNode2.innerHTML += `<a href="./album.html?album=${element.album.id}"><div class="col-lg-3">
+		albumCardNode2.innerHTML += `<a href="./album.html?album=${albumId[i]}"><div class="col-lg-3">
 		<div class="card mb-3" style="width: 350px; background-color: #312728;">
 			<div class="row no-gutters">
 				<div class="col-4 d-inline-block">
@@ -132,11 +134,11 @@ window.onload = async () => {
 		for (let i = 0; i < 6; i++) {
 			let element = potatojson[i];
 
-			artistNode.innerHTML = `<h3 class="text-white">${element.artist.name}</h3>`
+			artistNode.innerHTML = `<h3 class="text-white font-weight-bold">${element.artist.name}</h3>`
 
 			songCardNode1.innerHTML += `<div class="col-lg-2">
-		<div class="card mx--1" style="width:170px;">
-			<img id="recently-played-card-img1" class="card-img-top p-2"
+		<div id="song-card" class="card mx--1 " style="width:170px;">
+			<img id="recently-played-card-img1" class="card-img-top p-2 rounded"
 				src="${element.album.cover_medium}"
 				alt="Card image cap">
 			<div class="card-body p-3">
@@ -163,8 +165,8 @@ for (let i = 6; i < 12; i++) {
 
 
 	songCardNode2.innerHTML += `<div class="col-lg-2">
-	<div class="card mx--1" style="width:170px;">
-		<img id="recently-played-card-img1" class="card-img-top p-2"
+	<div id="song-card" class="card mx--1 " style="width:170px;">
+		<img id="recently-played-card-img1" class="card-img-top p-2 rounded"
 			src="${element.album.cover_medium}"
 			alt="Card image cap">
 		<div class="card-body p-3">
