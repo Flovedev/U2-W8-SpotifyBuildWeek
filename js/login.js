@@ -21,6 +21,10 @@ function login() {
     })
 }
 
+function signUp () {
+    
+}
+
 window.onload = (
     login()
 )

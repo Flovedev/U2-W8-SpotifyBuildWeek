@@ -35,10 +35,15 @@ let artistID;
 
 const getAlbumData = async () => {
     try {
-        const res = await fetch(urlAlbum + id, options)
+        const res = await fetch(urlAlbum + urlAlbumID, options)
         const data = await res.json()
         console.log(data)
         renderAlbum(data)
+        saveAlbum(data)
+        displaySavedAlbum(data)
+        deleteAlbum(data)
+        changeNumbersToBarsWhenClicked (data)
+        changeBottom(data)
     } catch (error) {
         console.log(error)
     }
@@ -104,8 +109,9 @@ const renderAlbum = async (data) => {
     let albumDuration = data.duration;
     let minutes = Math.floor(albumDuration / 60)
     let seconds = albumDuration - minutes * 60
+    let returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
 
-    albumDurationLocation.innerText = minutes + " min " + seconds + " sec";
+    albumDurationLocation.innerText = minutes + " min " + returnedSeconds + " sec";
     albumTitle.innerText = data.title
     albumTypeLocation.innerText = albumTypeFinal;
 
@@ -134,7 +140,9 @@ const renderAlbum = async (data) => {
         let trackDurationRaw = data.tracks.data[i].duration
         let minutes = Math.floor(trackDurationRaw / 60)
         let seconds = trackDurationRaw - minutes * 60
-        let trackDurationRawInMinSec = minutes + ":" + seconds;
+        let returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+
+        let trackDurationRawInMinSec = minutes + ":" + returnedSeconds;
         trackDuration.innerText = trackDurationRawInMinSec;
 
         trackName.appendChild(artistNameP)
@@ -146,8 +154,75 @@ const renderAlbum = async (data) => {
     }
 }
 
+function saveAlbum(data) {
+    let save = document.getElementById("save-song-heart")
+    save.addEventListener("click",function(){
+    localStorage.setItem(data.id, data.title)
+    })
+}
+
+function displaySavedAlbum(data) {
+    let saveContainer = document.getElementById("liked-songs-go-here")
+    let newAlbum = document.createElement("a")
+    newAlbum.innerText = localStorage.getItem(data.id)
+    newAlbum.setAttribute("href", `./album.html?album=${data.id}`)
+    saveContainer.appendChild(newAlbum)
+}
+
+function deleteAlbum(data) {
+    let save = document.getElementById("save-song-heart")
+    let savedSongs = document.querySelectorAll("ul > a")
+    save.addEventListener("click",function(){
+        for (let i = 0; i<savedSongs.length;i++)
+        {
+            if(savedSongs[i].innerText===localStorage.getItem(data.id)){
+                localStorage.removeItem(data.id)
+                
+            } else {
+                
+            }
+        }
+        location.reload();
+    })
+}
+
+function changeNumbersToBarsWhenClicked (data) {
+    let numbers = document.querySelectorAll("tbody> tr > th:nth-child(-n+3)")
+    for (let i = 0; i< numbers.length;i ++)
+    {
+        numbers[i].addEventListener("click", function(){
+            for (let i = 0; i< numbers.length;i ++)
+    {
+            numbers[i].innerText = i+1;
+    }
+            numbers[i].innerHTML = `<i class="bi bi-play-fill"></i>`
+        })
+        
+    }
+}
+
+function changeBottom(data) {
+    let albumArt = document.getElementById("album-cover-mini")
+    let songName = document.getElementById("song-name-bottom")
+    let artistName = document.getElementById("artist-name-bottom")
+    let audioPlayer = document.getElementById("audio-player")
+
+    albumArt.setAttribute("src", data.cover_big)
+    artistName.innerText = data.artist.name
+
+    let numbers = document.querySelectorAll("tbody> tr > th:nth-child(-n+3)")
+    for (let i = 0; i< numbers.length;i ++)
+    {
+        numbers[i].addEventListener("click", function(){
+            songName.innerText = data.tracks.data[i].title
+            audioPlayer.setAttribute("src",data.tracks.data[i].preview)
+        })
+    }
+}
+
 window.onload = (
     getAlbumData(),
     changeNavbarBG(),
-    getSearchData()
+    getSearchData(),
+    changeNumbersToBarsWhenClicked ()
 )
