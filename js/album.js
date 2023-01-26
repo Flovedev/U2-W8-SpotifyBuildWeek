@@ -35,7 +35,7 @@ let artistID;
 
 const getAlbumData = async () => {
     try {
-        const res = await fetch(urlAlbum + urlAlbumID, options)
+        const res = await fetch(urlAlbum + id, options)
         const data = await res.json()
         console.log(data)
         renderAlbum(data)
