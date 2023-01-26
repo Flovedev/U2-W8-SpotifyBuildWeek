@@ -207,7 +207,7 @@ window.onload = async () => {
 const searchArtist = (event) => {
 	const input = event.target.value
 	if (event.key === "Enter") {
-		window.location.href = `./ index.html ? artist = ${input} `;
+		window.location.href = `./index.html?artist=${input}`;
 	}
 }
 
