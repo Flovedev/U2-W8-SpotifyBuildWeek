@@ -346,29 +346,27 @@ body {
   opacity: 0;
 }
 
+#song-card:hover .play-button {
+  cursor: pointer;
+  transform: translateY(-10px);
+  opacity: 1;
+}
+
 .card:hover .play-button {
   cursor: pointer;
   opacity: 1;
 }
 
-p {
-  font-size: 12px;
-}
-
-h6 {
-  font-size: 14px;
-}
-
 .bottom-right {
   position: absolute;
-  bottom: 150px;
+  bottom: 140px;
   left: 70px;
 }
 
 .bottom-right2 {
   position: absolute;
-  bottom: 100px;
-  left: 85px;
+  bottom: 93px;
+  left: 90px;
 }
 
 #song-card-container {
