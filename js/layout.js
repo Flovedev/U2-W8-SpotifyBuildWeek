@@ -110,17 +110,3 @@ const getTracklist = async () => {
         console.log(err)
     }
 }
-
-const searchArtist = (event) => {
-    const input = event.target.value
-    if (event.key === "Enter") {
-        window.location.href = `./home.html?artist=${input}`;
-    }
-}
-
-const searchAlbum = (event) => {
-    const input = event.target.value
-    if (input.length > 3) {
-        console.log(`I have to render ${input}`)
-    }
-}

@@ -40,8 +40,6 @@ window.onload = async () => {
 		let potatojson = potato.data
 		console.log(potatojson)
 
-
-
 		for (let i = 0; i < potatojson.length; i++) {
 			const element = potatojson[i];
 			if (albumNames.includes(element.album.title)) {
@@ -54,13 +52,11 @@ window.onload = async () => {
 
 		console.log(albumNames)
 
-
-		
 		for (let i = 0; i < albumNames.length; i++) {
-			if(i < 3) {
+			if (i < 3) {
 				let element = potatojson[i];
 
-			albumCardNode1.innerHTML += `<a href="./album.html?album=${element.album.id}"><div class="col-lg-3">
+				albumCardNode1.innerHTML += `<a href="./album.html?album=${element.album.id}"><div class="col-lg-3">
 			<div class="card mb-3" style="width: 350px; background-color: #312728;">
 				<div class="row no-gutters">
 					<div class="col-4 d-inline-block">
@@ -86,16 +82,16 @@ window.onload = async () => {
 			</div>
 		</div>
 		</a>`
-	} else {
-			break;
+			} else {
+				break;
+			}
 		}
-	}
 
-	for (let i = 3; i < albumNames.length; i++) {
-		if(i < 6) {
-			let element = potatojson[i];
+		for (let i = 3; i < albumNames.length; i++) {
+			if (i < 6) {
+				let element = potatojson[i];
 
-		albumCardNode2.innerHTML += `<a href="./album.html?album=${element.album.id}"><div class="col-lg-3">
+				albumCardNode2.innerHTML += `<a href="./album.html?album=${element.album.id}"><div class="col-lg-3">
 		<div class="card mb-3" style="width: 350px; background-color: #312728;">
 			<div class="row no-gutters">
 				<div class="col-4 d-inline-block">
@@ -121,14 +117,10 @@ window.onload = async () => {
 		</div>
 	</div>
 	</a>`
-} else {
-		break;
-	}
-}
-
-			
-
-
+			} else {
+				break;
+			}
+		}
 
 		for (let i = 0; i < 6; i++) {
 			let element = potatojson[i];
@@ -156,14 +148,12 @@ window.onload = async () => {
 			</div>
 		</div>
 	</div>`
-}
+		}
 
-for (let i = 6; i < 12; i++) {
-	const element = potatojson[i];
+		for (let i = 6; i < 12; i++) {
+			const element = potatojson[i];
 
-
-
-	songCardNode2.innerHTML += `<div class="col-lg-2">
+			songCardNode2.innerHTML += `<div class="col-lg-2">
 	<div class="card mx--1" style="width:170px;">
 		<img id="recently-played-card-img1" class="card-img-top p-2"
 			src="${element.album.cover_medium}"
@@ -184,8 +174,23 @@ for (let i = 6; i < 12; i++) {
 		</div>
 	</div>
 </div>`
-	
-}
+
+		}
+
+		for (let i = 0; i < albumNames.length; i++) {
+			const element = potatojson[i];
+
+			searchNode.innerHTML += `
+			<a href="./album.html?album=${element.album.id}">
+			<div class="card m-2 d-none" style="width: 18rem;">
+				<img src="${albumImg[i]}" class="card-img-top" alt="...">
+				<div class="card-body">
+			  		<h5 class="card-title albums-to-search">${albumNames[i]}</h5>
+				</div>
+		  	</div>
+		  	</a>`
+		}
+
 	} catch (error) {
 		console.log(error);
 	}
@@ -195,20 +200,46 @@ for (let i = 6; i < 12; i++) {
 const searchArtist = (event) => {
 	const input = event.target.value
 	if (event.key === "Enter") {
-		window.location.href = `./index.html?artist=${input}`;
+		window.location.href = `./ index.html ? artist = ${input} `;
 	}
 }
+
+const albumsNode = document.getElementById("first-container")
+const albumsNode2 = document.getElementById("second-container")
+const searchNode = document.getElementById("search-container")
+let albumsToNode = document.getElementsByClassName("albums-to-search")
 
 const searchAlbum = (event) => {
-	const albumsNode = document.getElementById("first-container")
-	const input = event.target.value
-	if (input.length > 3) {
-		albumsNode.innerHTML = `<p>${findAlbumById(input)}</p>`
-	} else if (input.length === 0) {
-		albumsNode.innerHTML = `<p>${"emtpy"}</p>`
+	let input = event.target.value
+	let filter = input.toLowerCase()
+
+	if (filter.length > 3) {
+		albumsNode.classList.add("d-none")
+		albumsNode2.classList.add("d-none")
+		searchNode.classList.remove("d-none")
+
+		for (let i = 0; i < albumsToNode.length; i++) {
+			let textValue = albumsToNode[i].innerHTML
+			if (textValue.toLocaleLowerCase().indexOf(filter) > -1) {
+				console.log("allgood")
+				// albumsToNode[i].classList.remove("d-none")
+			} else {
+				console.log("dont")
+			}
+		}
+
+	} else if (filter.length === 0) {
+		albumsNode.classList.remove("d-none")
+		albumsNode2.classList.remove("d-none")
+		searchNode.classList.add("d-none")
 	}
 }
 
-const findAlbumById = (albumId) => {
-	return albumNames.find((album) => album.asin === albumId)
+const findAlbumById = (str) => {
+	return albumNames.find((album) => album.title.toLowerCase().include(str))
 }
+
+const fetchForSearch = async (event) => {
+
+}
+
