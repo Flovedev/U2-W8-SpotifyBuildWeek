@@ -4,6 +4,10 @@ body {
     background-color: #181818;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 #top-content {
     height: 88vh;
 }
@@ -13,6 +17,10 @@ body {
     color: #A3A39B;
     background-color: #000000;
     overflow: hidden;
+}
+
+#navbar-left a {
+    color: inherit;
 }
 
 #navbar-left div:nth-child(-n+3) div:hover {
@@ -39,14 +47,10 @@ body {
     font-size: small;
 }
 
-#navbar-left>div:first-of-type {
+#navbar-left>a:first-of-type {
     color: white;
     font-size: larger;
     font-weight: bolder;
-}
-
-#navbar-left div div>:last-of-type {
-    /* background-color: red; */
 }
 
 #navbar-left ul {
@@ -109,18 +113,36 @@ span {
 
 #artist-content {
     color: white;
+    background: rgb(156, 96, 31);
+    background: linear-gradient(180deg, rgba(156, 96, 31, 1) 0%, rgba(81, 50, 16, 1) 14%, rgba(55, 34, 11, 1) 22%, rgba(0, 0, 0, 1) 100%);
 }
 
 #artist-jumbotron {
     height: 42vh;
-    /* background-image: url("https://www.udiscovermusic.com/wp-content/uploads/2019/03/Queen-II-album-cover-820.jpg"); */
-    background-size: cover;
     color: white;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
 }
 
 #artist-content th img {
     width: 40px;
     height: 40px;
+}
+
+#artist-content button {
+    border-color: #808080;
+}
+
+#artist-content svg:first-of-type:hover {
+    scale: 1.05;
+}
+
+#artist-content svg:nth-last-of-type(1):hover {
+    fill: white;
 }
 
 #artist-content tr>th:nth-last-child(-n+2) {
@@ -144,4 +166,12 @@ span {
 
 #search-artist-bar {
     color: aliceblue;
+}
+
+#artist-content-see {
+    cursor: pointer;
+}
+
+#artist-content th {
+    vertical-align: middle;
 }
