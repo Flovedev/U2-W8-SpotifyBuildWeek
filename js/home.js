@@ -111,3 +111,11 @@ window.onload = async () => {
 		console.log(error);
 	}
 };
+
+
+const searchArtist = (event) => {
+	const input = event.target.value
+	if (event.key === "Enter") {
+		window.location.href = `./index.html?artist=${input}`;
+	}
+}

@@ -113,8 +113,8 @@ span {
 
 #artist-content {
     color: white;
-    background: rgb(156, 96, 31);
-    background: linear-gradient(180deg, rgba(156, 96, 31, 1) 0%, rgba(81, 50, 16, 1) 14%, rgba(55, 34, 11, 1) 22%, rgba(0, 0, 0, 1) 100%);
+    background: rgb(111, 111, 111);
+    background: linear-gradient(180deg, rgba(111, 111, 111, 1) 0%, rgba(91, 91, 91, 1) 8%, rgba(62, 62, 62, 1) 24%, rgba(0, 0, 0, 1) 100%);
 }
 
 #artist-jumbotron {
@@ -174,4 +174,9 @@ span {
 
 #artist-content th {
     vertical-align: middle;
+}
+
+#artist-content tr:hover {
+    cursor: default;
+    background-color: rgb(39, 40, 44);
 }

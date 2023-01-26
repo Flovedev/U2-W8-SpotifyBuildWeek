@@ -114,7 +114,7 @@ const getTracklist = async () => {
 const searchArtist = (event) => {
     const input = event.target.value
     if (event.key === "Enter") {
-
+        window.location.href = `./home.html?artist=${input}`;
     }
 }
 
