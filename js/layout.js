@@ -95,7 +95,7 @@ const getTracklist = async () => {
 
             resData.forEach(function callback(element, index) {
                 tracksNode.innerHTML += `
-                    <tr>
+                    <tr class="numbers">
                         <th scope="col">${index + 1}</th>
                         <th scope="col"><a href='./album.html?album=${element.album.id}'><img src="${element.album.cover}" alt=""></a></th>
                         <th scope="col">${element.title}</th>
@@ -108,5 +108,23 @@ const getTracklist = async () => {
         }
     } catch (err) {
         console.log(err)
+    }
+}
+
+function changeBottom(data) {
+    let albumArt = document.getElementById("album-cover-mini")
+    let songName = document.getElementById("song-name-bottom")
+    let artistName = document.getElementById("artist-name-bottom")
+    let audioPlayer = document.getElementById("audio-player")
+
+    albumArt.setAttribute("src", data.cover_big)
+    artistName.innerText = data.artist.name
+
+    let numbers = document.querySelectorAll(".numbers")
+    for (let i = 0; i < numbers.length; i++) {
+        numbers[i].addEventListener("click", function () {
+            songName.innerText = data.tracks.data[i].title
+            audioPlayer.setAttribute("src", data.tracks.data[i].preview)
+        })
     }
 }
