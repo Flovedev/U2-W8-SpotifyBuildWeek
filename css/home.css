@@ -367,6 +367,16 @@ h6 {
 
 .bottom-right2 {
   position: absolute;
-  bottom: 132px;
-  left: 70px;
+  bottom: 100px;
+  left: 85px;
 }
+
+#song-card-container {
+  background-color: black;
+  
+}
+
+#songs-container {
+  background-color: black;
+}
+

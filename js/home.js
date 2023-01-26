@@ -22,8 +22,13 @@ const getData = async () => {
 	}
 };
 
-const albumCardNode = document.getElementById("album-card-container");
-const songCardNode = document.getElementById("song-card-container");
+const albumCardNode1 = document.getElementById("album-card-container1");
+const songCardNode1 = document.getElementById("song-card-container1");
+
+const albumCardNode2 = document.getElementById("album-card-container2");
+const songCardNode2 = document.getElementById("song-card-container2");
+
+const artistNode = document.getElementById("artist-name");
 
 let albumNames = [];
 let albumImg = [];
@@ -49,21 +54,23 @@ window.onload = async () => {
 
 		console.log(albumNames)
 
+
+		
 		for (let i = 0; i < albumNames.length; i++) {
+			if(i < 3) {
+				let element = potatojson[i];
 
-			let element = potatojson[i];
-
-			albumCardNode.innerHTML += `<a href="./album.html?album=${element.album.id}"><div class="col-lg">
-			<div class="card mb-3" style="width: 258px; background-color: #312728;">
+			albumCardNode1.innerHTML += `<a href="./album.html?album=${element.album.id}"><div class="col-lg-3">
+			<div class="card mb-3" style="width: 350px; background-color: #312728;">
 				<div class="row no-gutters">
 					<div class="col-4 d-inline-block">
-						<img style="width: 70px;"
+						<img style="width: 90px;"
 							src="${albumImg[i]}"
 							alt="...">
 					</div>
 					<div class="col-md-8 d-flex justify-content-start align-items-center">
 						<div class="card-body d-flex align-items-center p-0">
-							<h6 class="card-title m-0 ">${albumNames[i]}</h6>
+							<h6 class="card-title m-0 text-elipsis">${albumNames[i]}</h6>
 							<div class="play-button ml-auto" onclick="this.classList.toggle('active')">
 								<div class="fondo" x="0" y="0"></div>
 								<div class="icono ml-auto">
@@ -79,15 +86,57 @@ window.onload = async () => {
 			</div>
 		</div>
 		</a>`
+	} else {
+			break;
 		}
+	}
 
-
-
-		for (let i = 0; i < 14; i++) {
+	for (let i = 3; i < albumNames.length; i++) {
+		if(i < 6) {
 			let element = potatojson[i];
 
-			songCardNode.innerHTML += `<div class="col">
-		<div class="card" style="width: 150px;">
+		albumCardNode2.innerHTML += `<a href="./album.html?album=${element.album.id}"><div class="col-lg-3">
+		<div class="card mb-3" style="width: 350px; background-color: #312728;">
+			<div class="row no-gutters">
+				<div class="col-4 d-inline-block">
+					<img style="width: 90px;"
+						src="${albumImg[i]}"
+						alt="...">
+				</div>
+				<div class="col-md-8 d-flex justify-content-start align-items-center">
+					<div class="card-body d-flex align-items-center p-0">
+						<h6 class="card-title m-0 text-elipsis">${albumNames[i]}</h6>
+						<div class="play-button ml-auto" onclick="this.classList.toggle('active')">
+							<div class="fondo" x="0" y="0"></div>
+							<div class="icono ml-auto">
+								<div class="parte izquierda" x="0" y="0" width="100" height="100"
+									fill="#fff"></div>
+								<div class="parte derecha" x="0" y="0" width="100" height="100"
+									fill="#fff"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</a>`
+} else {
+		break;
+	}
+}
+
+			
+
+
+
+		for (let i = 0; i < 6; i++) {
+			let element = potatojson[i];
+
+			artistNode.innerHTML = `<h3 class="text-white">${element.artist.name}</h3>`
+
+			songCardNode1.innerHTML += `<div class="col-lg-2">
+		<div class="card mx--1" style="width:170px;">
 			<img id="recently-played-card-img1" class="card-img-top p-2"
 				src="${element.album.cover_medium}"
 				alt="Card image cap">
@@ -107,7 +156,36 @@ window.onload = async () => {
 			</div>
 		</div>
 	</div>`
-		}
+}
+
+for (let i = 6; i < 12; i++) {
+	const element = potatojson[i];
+
+
+
+	songCardNode2.innerHTML += `<div class="col-lg-2">
+	<div class="card mx--1" style="width:170px;">
+		<img id="recently-played-card-img1" class="card-img-top p-2"
+			src="${element.album.cover_medium}"
+			alt="Card image cap">
+		<div class="card-body p-3">
+			<h6 id="recently-played-card-title1" class="card-title mb-1 text-truncate">${element.title}</h6>
+			<div class="play-button ml-auto bottom-right2"
+				onclick="this.classList.toggle('active')">
+				<div class="fondo" x="0" y="0"></div>
+				<div class="icono ml-auto">
+					<div class="parte izquierda" x="0" y="0" width="100" height="100" fill="#fff">
+					</div>
+					<div class="parte derecha" x="0" y="0" width="100" height="100" fill="#fff">
+					</div>
+				</div>
+			</div>
+			<p class="card-text" style="color: rgb(153, 153, 153);">${element.artist.name}</p>
+		</div>
+	</div>
+</div>`
+	
+}
 	} catch (error) {
 		console.log(error);
 	}
