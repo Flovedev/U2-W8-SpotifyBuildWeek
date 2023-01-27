@@ -350,3 +350,11 @@ div > a {
     border-top: 1px solid rgb(40, 40, 40);
     background-color: rgb(26, 26, 26);
 }
+
+a > li {
+    color: grey;
+}
+
+a:hover {
+    text-decoration: none;
+}

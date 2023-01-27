@@ -40,8 +40,7 @@ const getAlbumData = async () => {
         console.log(data)
         renderAlbum(data)
         saveAlbum(data)
-        displaySavedAlbum(data)
-        deleteAlbum(data)
+        displaySavedAlbum()
         changeNumbersToBarsWhenClicked (data)
         changeBottom(data)
     } catch (error) {
@@ -155,37 +154,68 @@ const renderAlbum = async (data) => {
     }
 }
 
+
 function saveAlbum(data) {
-    let save = document.getElementById("save-song-heart")
-    save.addEventListener("click",function(){
-    localStorage.setItem(data.id, data.title)
-    })
-}
+        let saveButton = document.getElementById("save-song-heart")
 
-function displaySavedAlbum(data) {
-    let saveContainer = document.getElementById("liked-songs-go-here")
-    let newAlbum = document.createElement("a")
-    newAlbum.innerText = localStorage.getItem(data.id)
-    newAlbum.setAttribute("href", `./album.html?album=${data.id}`)
-    saveContainer.appendChild(newAlbum)
-}
+        saveButton.addEventListener("click", function(){
+        let savedAlbums = JSON.parse(localStorage.getItem("allAlbums"))
 
-function deleteAlbum(data) {
-    let save = document.getElementById("save-song-heart")
-    let savedSongs = document.querySelectorAll("ul > a")
-    save.addEventListener("click",function(){
-        for (let i = 0; i<savedSongs.length;i++)
-        {
-            if(savedSongs[i].innerText===localStorage.getItem(data.id)){
-                localStorage.removeItem(data.id)
-                
-            } else {
-                
-            }
+        let parseData = JSON.parse(localStorage.getItem("allAlbums"));
+        let rawData = localStorage.getItem("allAlbums");
+        if(savedAlbums == null) savedAlbums = [];
+        let albumID = data.id;
+        let albumTitle = data.title;
+        let albums = {
+            "AlbumID":  albumID,
+            "AlbumTitle": albumTitle,
         }
-        location.reload();
+
+        
+        if(parseData!==null) {
+            for ( let i = 0; i<JSON.parse(localStorage.getItem("allAlbums")).length;i++)
+            {
+                if((parseData[i].AlbumID===data.id)===true)
+                {
+                    localStorage.removeItem("allAlbums")
+                } else {
+                    localStorage.setItem("albums",JSON.stringify(albums))
+                    savedAlbums.push(albums)
+                    localStorage.setItem("allAlbums", JSON.stringify(savedAlbums))
+                    console.log(JSON.parse(localStorage.getItem("allAlbums")))
+                }
+            }
+        } else {
+                    localStorage.setItem("albums",JSON.stringify(albums))
+                    savedAlbums.push(albums)
+                    localStorage.setItem("allAlbums", JSON.stringify(savedAlbums))
+                    console.log(JSON.parse(localStorage.getItem("allAlbums")))
+        }
     })
 }
+
+function displaySavedAlbum() {
+    let saveContainer = document.getElementById("liked-songs-go-here")
+    //console.log(JSON.parse(localStorage.getItem("allAlbums")))
+    let parseData = JSON.parse(localStorage.getItem("allAlbums"));
+    if (parseData!==null) {
+        for (let i = 0; i<JSON.parse(localStorage.getItem("allAlbums")).length; i++)
+        {
+            let newAlbumA = document.createElement("a")
+            let newAlbumLi = document.createElement("li")
+           
+            newAlbumLi.innerText = JSON.parse(localStorage.getItem("allAlbums"))[i].AlbumTitle
+            newAlbumA.appendChild(newAlbumLi)
+            newAlbumA.setAttribute("href", `./album.html?album=${JSON.parse(localStorage.getItem("allAlbums"))[i].AlbumID}`)
+            saveContainer.appendChild(newAlbumA)
+        }
+    }
+}
+
+function reload() {
+    location.reload()
+}
+
 
 function changeNumbersToBarsWhenClicked (data) {
     let numbers = document.querySelectorAll("tbody> tr > th:nth-child(-n+3)")

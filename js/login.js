@@ -28,4 +28,3 @@ function signUp () {
 window.onload = (
     login()
 )
-
