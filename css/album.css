@@ -1,6 +1,7 @@
 body {
     background-color: rgb(18, 18, 18);
     position: relative;
+    height: 100vh;
 }
 
 #main::-webkit-scrollbar {
@@ -252,7 +253,7 @@ body {
 }
 
 #navbar-left>div:first-of-type {
-    color: white;
+
     font-size: larger;
     font-weight: bolder;
 }
@@ -355,7 +356,7 @@ span {
 }
 
 #audio-player {
-    min-width: 600px;
+    /* min-width: 500px; */
     background-color: transparent;
 }
 
@@ -368,10 +369,24 @@ div>a {
     background-color: rgb(26, 26, 26);
 }
 
-a > li {
+a>li {
     color: grey;
 }
 
 a:hover {
     text-decoration: none;
+    color: white;
+}
+
+#main tr th:first-child:hover {
+    cursor: pointer;
+}
+
+#player-info {
+    width: 200px;
+}
+
+#navbar-left>a:first-of-type p {
+    font-size: 30px;
+    font-weight: 800;
 }

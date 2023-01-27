@@ -41,7 +41,7 @@ const getAlbumData = async () => {
         renderAlbum(data)
         saveAlbum(data)
         displaySavedAlbum()
-        changeNumbersToBarsWhenClicked (data)
+        changeNumbersToBarsWhenClicked(data)
         changeBottom(data)
     } catch (error) {
         setInterval(1000, location.reload())
@@ -159,60 +159,60 @@ const renderAlbum = async (data) => {
 
 
 function saveAlbum(data) {
-        let saveButton = document.getElementById("save-song-heart")
+    let saveButton = document.getElementById("save-song-heart")
 
-        saveButton.addEventListener("click", function(){
+    saveButton.addEventListener("click", function () {
         let savedAlbums = JSON.parse(localStorage.getItem("allAlbums"))
 
         let parseData = JSON.parse(localStorage.getItem("allAlbums"));
         let rawData = localStorage.getItem("allAlbums");
-        if(savedAlbums == null) savedAlbums = [];
+        if (savedAlbums == null) savedAlbums = [];
         let albumID = data.id;
         let albumTitle = data.title;
         let albums = {
-            "AlbumID":  albumID,
+            "AlbumID": albumID,
             "AlbumTitle": albumTitle,
         }
 
-        
-        if(parseData!==null) {
-            for ( let i = 0; i<JSON.parse(localStorage.getItem("allAlbums")).length;i++)
-            {
-                if((parseData[i].AlbumID===data.id)===true)
-                {
+
+        if (parseData !== null) {
+            for (let i = 0; i < JSON.parse(localStorage.getItem("allAlbums")).length; i++) {
+                if ((parseData[i].AlbumID === data.id) === true) {
                     localStorage.removeItem("allAlbums")
                 } else {
-                    localStorage.setItem("albums",JSON.stringify(albums))
+                    localStorage.setItem("albums", JSON.stringify(albums))
                     savedAlbums.push(albums)
                     localStorage.setItem("allAlbums", JSON.stringify(savedAlbums))
                     console.log(JSON.parse(localStorage.getItem("allAlbums")))
                 }
             }
         } else {
-                    localStorage.setItem("albums",JSON.stringify(albums))
-                    savedAlbums.push(albums)
-                    localStorage.setItem("allAlbums", JSON.stringify(savedAlbums))
-                    console.log(JSON.parse(localStorage.getItem("allAlbums")))
+            localStorage.setItem("albums", JSON.stringify(albums))
+            savedAlbums.push(albums)
+            localStorage.setItem("allAlbums", JSON.stringify(savedAlbums))
+            console.log(JSON.parse(localStorage.getItem("allAlbums")))
         }
-    let save = document.getElementById("save-song-heart")
-    save.addEventListener("click",function(){
-    localStorage.setItem(data.id, data.title)
-    //save.classList.toggle("bi bi-heart-fill");
-    //save.classList.toggle("bi bi-heart");
-    
-    })
+        let save = document.getElementById("save-song-heart")
+        save.addEventListener("click", function () {
+            localStorage.setItem(data.id, data.title)
+            //save.classList.toggle("bi bi-heart-fill");
+            //save.classList.toggle("bi bi-heart");
+
+        })
+
+    }
+    )
 }
 
 function displaySavedAlbum() {
     let saveContainer = document.getElementById("liked-songs-go-here")
     //console.log(JSON.parse(localStorage.getItem("allAlbums")))
     let parseData = JSON.parse(localStorage.getItem("allAlbums"));
-    if (parseData!==null) {
-        for (let i = 0; i<JSON.parse(localStorage.getItem("allAlbums")).length; i++)
-        {
+    if (parseData !== null) {
+        for (let i = 0; i < JSON.parse(localStorage.getItem("allAlbums")).length; i++) {
             let newAlbumA = document.createElement("a")
             let newAlbumLi = document.createElement("li")
-           
+
             newAlbumLi.innerText = JSON.parse(localStorage.getItem("allAlbums"))[i].AlbumTitle
             newAlbumA.appendChild(newAlbumLi)
             newAlbumA.setAttribute("href", `./album.html?album=${JSON.parse(localStorage.getItem("allAlbums"))[i].AlbumID}`)
@@ -220,6 +220,7 @@ function displaySavedAlbum() {
         }
     }
 }
+
 
 function reload() {
     location.reload()
@@ -258,12 +259,6 @@ function changeBottom(data) {
     }
 }
 
-function changeHeart() {
-    let heartNode = document.querySelector(".bi-heart");
-    heartNode.addEventListener("click", function () {
-        heartNode.classList.toggle("-fill");
-    });
-}
 
 window.onload = (
     getAlbumData(),

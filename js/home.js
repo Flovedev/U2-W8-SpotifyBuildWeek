@@ -31,6 +31,7 @@ const songCardNode2 = document.getElementById("song-card-container2");
 const artistNode = document.getElementById("artist-name");
 
 let albumNames = [];
+let albumShortNames = [];
 let albumImg = [];
 let albumPreview = [];
 
@@ -44,13 +45,14 @@ window.onload = async () => {
 		let albumNames = [];
 		let albumImg = [];
 		let albumId = [];
-		
+
 
 		for (let i = 0; i < potatojson.length; i++) {
 			const element = potatojson[i];
 			if (albumNames.includes(element.album.title)) {
 
 			} else {
+				albumShortNames.push(element.album.title_short)
 				albumNames.push(element.album.title)
 				albumImg.push(element.album.cover_medium)
 				albumId.push(element.album.id)
@@ -65,31 +67,19 @@ window.onload = async () => {
 				let element = potatojson[i];
 
 				albumCardNode1.innerHTML += `
-				<div class="col-lg-4 flex-grow-1">
-					<div class="card mb-3" style="max-width: 470px; background-color: #312728;">
-						<div class="row no-gutters">
-							<div class="col-4 d-inline-block">
-								<a class="text-decoration-none" href="./album.html?album=${element.album.id}">
+				<a class="text-decoration-none" href="./album.html?album=${element.album.id}">
+					<div class="col-lg-4 flex-grow-1">
+						<div class="card mb-3" style="max-width: 470px; background-color: #312728;">
+							<div class="row no-gutters">
+								<div class="col-4 d-inline-block">
 									<img style="width: 90px;" src="${albumImg[i]}" alt="...">
-								</a>
-							</div>
-							<div class="col-md-8 d-flex justify-content-start align-items-center">
-								<a  class="text-decoration-none" href="./album.html?album=${element.album.id}">
-									<h6 class="card-title  m-0 text-elipsis">${albumNames[i]}</h6>
-								</a>
-								<div class="play-button1 ml-auto" onclick="this.classList.toggle('active')">
-									<div class="fondo" x="0" y="0"></div>
-									<div class="icono ml-auto">
-										<div class="parte izquierda" x="0" y="0" width="100" height="100" fill="#fff"></div>
-											<div class="parte derecha" x="0" y="0" width="100" height="100" fill="#fff"></div>
-											</div>
-										</div>
-									</div>
 								</div>
+							<div class="col-md-8 d-flex justify-content-start align-items-center">
+								<h6 class="card-title  m-0 text-elipsis">${albumNames[i]}</h6>
 							</div>
 						</div>
 					</div>
-					`
+				</a>`
 
 			} else {
 				break;
@@ -101,31 +91,19 @@ window.onload = async () => {
 				let element = potatojson[i];
 
 				albumCardNode2.innerHTML += `
-				<div class="col-lg-4 flex-grow-1">
-					<div class="card mb-3" style="max-width: 470px; background-color: #312728;">
-						<div class="row no-gutters">
-							<div class="col-4 d-inline-block">
-								<a class="text-decoration-none" href="./album.html?album=${albumId[i]}">
+				<a class="text-decoration-none" href="./album.html?album=${albumId[i]}">
+					<div class="col-lg-4 flex-grow-1">
+						<div class="card mb-3" style="max-width: 470px; background-color: #312728;">
+							<div class="row no-gutters">
+								<div class="col-4 d-inline-block">
 									<img style="width: 90px;" src="${albumImg[i]}" alt="...">
-								</a>
-							</div>
-							<div class="col-md-8 d-flex justify-content-start align-items-center">
-								<a  class="text-decoration-none" href="./album.html?album=${albumId[i]}">
+								</div>
+								<div class="col-md-8 d-flex justify-content-start align-items-center">
 									<h6 class="card-title  m-0 text-elipsis">${albumNames[i]}</h6>
-								</a>
-								<div class="play-button1 ml-auto" onclick="this.classList.toggle('active')">
-									<div class="fondo" x="0" y="0"></div>
-									<div class="icono ml-auto">
-										<div class="parte izquierda" x="0" y="0" width="100" height="100" fill="#fff"></div>
-											<div class="parte derecha" x="0" y="0" width="100" height="100" fill="#fff"></div>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
-						</div>
 					</div>
-					`
+				</a>`
 			} else {
 				break;
 			}
@@ -193,14 +171,14 @@ window.onload = async () => {
 
 			searchCardsNode.innerHTML += `
 			<a href="./album.html?album=${element.album.id}">
-			<div class="card m-2 look-at-me" style="width: 10rem;">
+			<div class="card m-2 look-at-me" style="width: 12rem; height: 16rem;">
 				<img src="${albumImg[i]}" class="card-img-top" alt="...">
-				<div class="card-body">
+				<div class="card-body p-1">
 			  		<h5 class="card-title albums-to-search">${albumNames[i]}</h5>
 				</div>
 		  	</div>
 		  	</a>`
-		}changeBottom(potatojson)
+		} changeBottom(potatojson)
 
 	} catch (error) {
 		setInterval(1000, location.reload())
@@ -260,19 +238,16 @@ function changeBottom(data) {
 	let artistName = document.getElementById("artist-name-bottom")
 	let audioPlayer = document.getElementById("audio-player")
 
-
-	// albumArt.setAttribute("src", data.cover_big)
-	// artistName.innerText = data.artist.name
 	console.log(albumPreview)
-	
+
 	let playNode = document.getElementsByClassName('play-button1 ml-auto')
 	for (let i = 0; i < playNode.length; i++) {
 		playNode[i].addEventListener("click", function () {
 
-			songName.innerText = data[i-6].title
-			audioPlayer.setAttribute("src", albumPreview[i-6])
-			albumArt.setAttribute("src", data[i-6].album.cover_medium)
-			artistName.innerText = data[i-6].artist.name
+			songName.innerText = data[i].title
+			audioPlayer.setAttribute("src", albumPreview[i])
+			albumArt.setAttribute("src", data[i].album.cover_medium)
+			artistName.innerText = data[i].artist.name
 		})
 	}
 }

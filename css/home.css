@@ -4,6 +4,7 @@
 }
 
 body {
+  font-family: 'Montserrat', sans-serif;
   background-color: black;
 }
 
@@ -381,4 +382,17 @@ body {
 #main a:hover {
   text-decoration: none;
   color: white;
+}
+
+#search-container {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(101, 0, 0, 1) 100%);
+}
+
+#search-container-cards div {
+  background-color: #312728;
+}
+
+#search-container h5 {
+  font-size: 15px;
 }

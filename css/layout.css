@@ -61,7 +61,7 @@ a:hover {
 }
 
 #navbar-left>a:first-of-type {
-    color: white;
+
     font-size: larger;
     font-weight: bolder;
 }
@@ -192,4 +192,9 @@ span {
 #artist-content tr:hover {
     cursor: default;
     background-color: rgb(39, 40, 44);
+}
+
+#navbar-left>a:nth-child(2) {
+    font-size: larger;
+    font-weight: bolder;
 }
