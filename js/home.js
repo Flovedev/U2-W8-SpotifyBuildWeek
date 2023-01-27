@@ -203,7 +203,7 @@ window.onload = async () => {
 		}changeBottom(potatojson)
 
 	} catch (error) {
-		//setInterval(1000, location.reload())
+		setInterval(1000, location.reload())
 		console.log(error);
 	}
 };
