@@ -366,17 +366,20 @@ body {
 
 .bottom-right2 {
   position: absolute;
-  bottom: 93px;
+  bottom: 105px;
   left: 90px;
 }
 
 #song-card-container {
   background-color: black;
-
 }
 
 #songs-container {
   background-color: black;
+}
+
+.song-card {
+  background-color: #212020;
 }
 
 #main a:hover {

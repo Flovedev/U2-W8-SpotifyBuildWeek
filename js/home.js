@@ -115,7 +115,7 @@ window.onload = async () => {
 			artistNode.innerHTML = `<h3 class="text-white font-weight-bold">${element.artist.name}</h3>`
 
 			songCardNode1.innerHTML += `<div class="col-lg-2">
-		<div id="song-card" class="card mx--1 " style="width:170px;">
+		<div class="card mx--1 song-card" style="width:170px;">
 			<img id="recently-played-card-img1" class="card-img-top p-2 rounded"
 				src="${element.album.cover_medium}"
 				alt="Card image cap">
@@ -143,7 +143,7 @@ window.onload = async () => {
 
 
 			songCardNode2.innerHTML += `<div class="col-lg-2">
-	<div id="song-card" class="card mx--1 " style="width:170px;">
+	<div class="card mx--1 song-card" style="width:170px;">
 		<img id="recently-played-card-img1" class="card-img-top p-2 rounded"
 			src="${element.album.cover_medium}"
 			alt="Card image cap">
