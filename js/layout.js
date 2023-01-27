@@ -53,9 +53,11 @@ window.onload = async () => {
           <div class="d-flex settings dropdown-item">
             <a class="pr-0 text-white" href="#">Settings</a>
           </div>
-          <div class="d-flex dropdown-item">
-            <a class="pr-0 pb-0 text-white" href="./login.html">Log Out</a>
-          </div>
+          <a class="pr-0 pb-0 text-white" href="./login.html">
+                            <div class="d-flex dropdown-item">
+                                Log Out
+                            </div>
+                        </a>
         </div>
       </div>
     </div>
