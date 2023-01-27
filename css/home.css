@@ -1,6 +1,6 @@
 #first-container {
   background: rgb(0, 0, 0);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(101, 0, 0, 1) 100%);
+  background: linear-gradient(0deg, #181818 0%, rgba(101, 0, 0, 1) 100%);
 }
 
 body {
