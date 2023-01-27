@@ -32,6 +32,7 @@ const artistNode = document.getElementById("artist-name");
 
 let albumNames = [];
 let albumImg = [];
+let albumPreview = [];
 
 window.onload = async () => {
 	try {
@@ -43,6 +44,7 @@ window.onload = async () => {
 		let albumNames = [];
 		let albumImg = [];
 		let albumId = [];
+		
 
 		for (let i = 0; i < potatojson.length; i++) {
 			const element = potatojson[i];
@@ -52,6 +54,7 @@ window.onload = async () => {
 				albumNames.push(element.album.title)
 				albumImg.push(element.album.cover_medium)
 				albumId.push(element.album.id)
+				albumPreview.push(element.preview)
 			}
 		}
 
@@ -197,10 +200,10 @@ window.onload = async () => {
 				</div>
 		  	</div>
 		  	</a>`
-		}
+		}changeBottom(potatojson)
 
 	} catch (error) {
-		setInterval(1000, location.reload())
+		//setInterval(1000, location.reload())
 		console.log(error);
 	}
 };
@@ -249,21 +252,27 @@ const findAlbumById = (str) => {
 	return albumNames.find((album) => album.title.toLowerCase().include(str))
 }
 
-let playNode = document.getElementsByClassName('play-button1 ml-auto')
-console.log(playNode)
+
+
 function changeBottom(data) {
 	let albumArt = document.getElementById("album-cover-mini")
 	let songName = document.getElementById("song-name-bottom")
 	let artistName = document.getElementById("artist-name-bottom")
 	let audioPlayer = document.getElementById("audio-player")
-	albumArt.setAttribute("src", data.cover_big)
-	artistName.innerText = data.artist.name
 
-	let numbers = document.querySelectorAll("tbody> tr > th:nth-child(-n+3)")
-	for (let i = 0; i < numbers.length; i++) {
-		numbers[i].addEventListener("click", function () {
-			songName.innerText = data.tracks.data[i].title
-			audioPlayer.setAttribute("src", data.tracks.data[i].preview)
+
+	// albumArt.setAttribute("src", data.cover_big)
+	// artistName.innerText = data.artist.name
+	console.log(albumPreview)
+	
+	let playNode = document.getElementsByClassName('play-button1 ml-auto')
+	for (let i = 0; i < playNode.length; i++) {
+		playNode[i].addEventListener("click", function () {
+
+			songName.innerText = data[i-6].title
+			audioPlayer.setAttribute("src", albumPreview[i-6])
+			albumArt.setAttribute("src", data[i-6].album.cover_medium)
+			artistName.innerText = data[i-6].artist.name
 		})
 	}
 }
