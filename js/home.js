@@ -249,7 +249,21 @@ const findAlbumById = (str) => {
 	return albumNames.find((album) => album.title.toLowerCase().include(str))
 }
 
-const fetchForSearch = async (event) => {
+let playNode = document.getElementsByClassName('play-button1 ml-auto')
+console.log(playNode)
+function changeBottom(data) {
+	let albumArt = document.getElementById("album-cover-mini")
+	let songName = document.getElementById("song-name-bottom")
+	let artistName = document.getElementById("artist-name-bottom")
+	let audioPlayer = document.getElementById("audio-player")
+	albumArt.setAttribute("src", data.cover_big)
+	artistName.innerText = data.artist.name
 
+	let numbers = document.querySelectorAll("tbody> tr > th:nth-child(-n+3)")
+	for (let i = 0; i < numbers.length; i++) {
+		numbers[i].addEventListener("click", function () {
+			songName.innerText = data.tracks.data[i].title
+			audioPlayer.setAttribute("src", data.tracks.data[i].preview)
+		})
+	}
 }
-
