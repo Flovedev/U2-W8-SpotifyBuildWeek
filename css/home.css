@@ -377,3 +377,12 @@ body {
 #songs-container {
   background-color: black;
 }
+
+#search-container {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(101, 0, 0, 1) 100%);
+
+}
+
+#search-container-cards div {
+  background-color: rgb(40, 40, 40);
+}

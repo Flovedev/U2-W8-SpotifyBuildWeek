@@ -4,6 +4,19 @@ body {
     background-color: #181818;
 }
 
+#main::-webkit-scrollbar {
+    width: 12px;
+}
+
+#main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#main::-webkit-scrollbar-thumb {
+    background-color: #909090;
+    border-radius: 20px;
+}
+
 a:hover {
     text-decoration: none;
 }

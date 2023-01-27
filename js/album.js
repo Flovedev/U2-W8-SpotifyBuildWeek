@@ -42,9 +42,10 @@ const getAlbumData = async () => {
         saveAlbum(data)
         displaySavedAlbum(data)
         deleteAlbum(data)
-        changeNumbersToBarsWhenClicked (data)
+        changeNumbersToBarsWhenClicked(data)
         changeBottom(data)
     } catch (error) {
+        setInterval(1000, location.reload())
         console.log(error)
     }
 }
@@ -55,6 +56,7 @@ const getArtistData = async () => {
         const data = await res.json()
         console.log(data)
     } catch (error) {
+        setInterval(1000, location.reload())
         console.log(error)
     }
 }
@@ -65,6 +67,7 @@ const getSearchData = async () => {
         const data = await res.json()
 
     } catch (error) {
+        setInterval(1000, location.reload())
         console.log(error)
     }
 }
@@ -157,8 +160,8 @@ const renderAlbum = async (data) => {
 
 function saveAlbum(data) {
     let save = document.getElementById("save-song-heart")
-    save.addEventListener("click",function(){
-    localStorage.setItem(data.id, data.title)
+    save.addEventListener("click", function () {
+        localStorage.setItem(data.id, data.title)
     })
 }
 
@@ -173,32 +176,29 @@ function displaySavedAlbum(data) {
 function deleteAlbum(data) {
     let save = document.getElementById("save-song-heart")
     let savedSongs = document.querySelectorAll("ul > a")
-    save.addEventListener("click",function(){
-        for (let i = 0; i<savedSongs.length;i++)
-        {
-            if(savedSongs[i].innerText===localStorage.getItem(data.id)){
+    save.addEventListener("click", function () {
+        for (let i = 0; i < savedSongs.length; i++) {
+            if (savedSongs[i].innerText === localStorage.getItem(data.id)) {
                 localStorage.removeItem(data.id)
-                
+
             } else {
-                
+
             }
         }
         location.reload();
     })
 }
 
-function changeNumbersToBarsWhenClicked (data) {
+function changeNumbersToBarsWhenClicked(data) {
     let numbers = document.querySelectorAll("tbody> tr > th:nth-child(-n+3)")
-    for (let i = 0; i< numbers.length;i ++)
-    {
-        numbers[i].addEventListener("click", function(){
-            for (let i = 0; i< numbers.length;i ++)
-    {
-            numbers[i].innerText = i+1;
-    }
+    for (let i = 0; i < numbers.length; i++) {
+        numbers[i].addEventListener("click", function () {
+            for (let i = 0; i < numbers.length; i++) {
+                numbers[i].innerText = i + 1;
+            }
             numbers[i].innerHTML = `<i class="bi bi-play-fill"></i>`
         })
-        
+
     }
 }
 
@@ -212,11 +212,10 @@ function changeBottom(data) {
     artistName.innerText = data.artist.name
 
     let numbers = document.querySelectorAll("tbody> tr > th:nth-child(-n+3)")
-    for (let i = 0; i< numbers.length;i ++)
-    {
-        numbers[i].addEventListener("click", function(){
+    for (let i = 0; i < numbers.length; i++) {
+        numbers[i].addEventListener("click", function () {
             songName.innerText = data.tracks.data[i].title
-            audioPlayer.setAttribute("src",data.tracks.data[i].preview)
+            audioPlayer.setAttribute("src", data.tracks.data[i].preview)
         })
     }
 }
@@ -225,5 +224,5 @@ window.onload = (
     getAlbumData(),
     changeNavbarBG(),
     getSearchData(),
-    changeNumbersToBarsWhenClicked ()
+    changeNumbersToBarsWhenClicked()
 )

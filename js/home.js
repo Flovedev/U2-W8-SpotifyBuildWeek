@@ -185,9 +185,9 @@ window.onload = async () => {
 		for (let i = 0; i < albumNames.length; i++) {
 			const element = potatojson[i];
 
-			searchNode.innerHTML += `
+			searchCardsNode.innerHTML += `
 			<a href="./album.html?album=${element.album.id}">
-			<div class="card m-2 d-none" style="width: 18rem;">
+			<div class="card m-2 look-at-me" style="width: 10rem;">
 				<img src="${albumImg[i]}" class="card-img-top" alt="...">
 				<div class="card-body">
 			  		<h5 class="card-title albums-to-search">${albumNames[i]}</h5>
@@ -197,6 +197,7 @@ window.onload = async () => {
 		}
 
 	} catch (error) {
+		setInterval(1000, location.reload())
 		console.log(error);
 	}
 };
@@ -212,13 +213,14 @@ const searchArtist = (event) => {
 const albumsNode = document.getElementById("first-container")
 const albumsNode2 = document.getElementById("second-container")
 const searchNode = document.getElementById("search-container")
+const searchCardsNode = document.getElementById("search-container-cards")
 let albumsToNode = document.getElementsByClassName("albums-to-search")
 
 const searchAlbum = (event) => {
 	let input = event.target.value
 	let filter = input.toLowerCase()
 
-	if (filter.length > 3) {
+	if (filter.length > 2) {
 		albumsNode.classList.add("d-none")
 		albumsNode2.classList.add("d-none")
 		searchNode.classList.remove("d-none")
@@ -226,10 +228,10 @@ const searchAlbum = (event) => {
 		for (let i = 0; i < albumsToNode.length; i++) {
 			let textValue = albumsToNode[i].innerHTML
 			if (textValue.toLocaleLowerCase().indexOf(filter) > -1) {
-				console.log("allgood")
-				// albumsToNode[i].classList.remove("d-none")
+				albumsToNode[i].closest(".look-at-me").classList.remove("d-none")
+
 			} else {
-				console.log("dont")
+				albumsToNode[i].closest(".look-at-me").classList.add("d-none")
 			}
 		}
 

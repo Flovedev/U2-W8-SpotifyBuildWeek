@@ -20,6 +20,45 @@ window.onload = async () => {
         if (res.ok) {
             console.log(resJson)
             artistNode.innerHTML = `
+            <div class="row px-5 py-2 mx-2 pt-3 top-navbar d-flex" id="top-navbar">
+      
+      <div class="dropdown ml-auto">
+        <button class="btn btn-secondary dropdown-toggle d-flex justify-content-center align-items-center p-1"
+          type="button" data-toggle="dropdown" aria-expanded="false" id="account-dropdown">
+          <img
+            src="https://i.pinimg.com/originals/c5/85/4a/c5854a027ffef745a3e6a082a813f6e4.png"
+            class="account-avatar mr-2" alt="" />
+          Power tigers
+        </button>
+        <div class="dropdown-menu">
+          <div class="d-flex dropdown-item pr-2">
+            <a class="pr-2 text-white" href="#">Account</a><i
+              class="bi bi-box-arrow-up-right ml-auto text-white mr-2"></i>
+          </div>
+          <div class="d-flex dropdown-item pr-2">
+            <a class="pr-2 text-white" href="#">Set up your Family Plan</a><i
+              class="bi bi-box-arrow-up-right ml-auto text-white mr-2"></i>
+          </div>
+          <div class="d-flex dropdown-item pr-2">
+            <a class="pr-0 text-white" href="#">Profile</a>
+          </div>
+          <div class="d-flex dropdown-item pr-2">
+            <a class="pr-0 text-white" href="#">Support</a><i
+              class="bi bi-box-arrow-up-right ml-auto text-white mr-2"></i>
+          </div>
+          <div class="d-flex dropdown-item pr-2">
+            <a class="pr-0 text-white" href="#">Download</a><i
+              class="bi bi-box-arrow-up-right ml-auto text-white mr-2"></i>
+          </div>
+          <div class="d-flex settings dropdown-item">
+            <a class="pr-0 text-white" href="#">Settings</a>
+          </div>
+          <div class="d-flex dropdown-item">
+            <a class="pr-0 pb-0 text-white" href="./login.html">Log Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
             <div class="jumbotron pb-1 pl-4 mb-0 d-flex flex-column" id="artist-jumbotron" style="background-image: url('${resJson.picture_xl}')">
             <div class="mt-auto">
                 <div class="d-flex align-items-center">
@@ -74,12 +113,50 @@ window.onload = async () => {
                     </div>
                 </div>
             </div>
+            <div class="row mx-5 mt-5 album-info d-flex flex-column">
+      
+      <p class="mb-0">© 2023 Bati, Flo and Amirreza Studios, Inc.</p>
+    </div>
+    <div class="row bottom-footer mx-5 mt-5">
+      <div class="col-lg-1 px-0 mr-5">
+        <p class="footer-header">Company</p>
+        <p>About</p>
+        <p>Jobs</p>
+        <p>For the Record</p>
+      </div>
+      <div class="col-lg-1 px-0 mx-5">
+        <p class="footer-header">Communities</p>
+        <p>For Artists</p>
+        <p>Developers</p>
+        <p>Advertising</p>
+        <p>Investors</p>
+        <p>Vendors</p>
+      </div>
+      <div class="col-lg-1 px-0 mx-5">
+        <p class="footer-header">Useful Links</p>
+        <p>Support</p>
+        <p>Free Mobile App</p>
+      </div>
+      <div class="col-lg-1 ml-auto"></div>
+      <div class="footer-icons"><i class="bi bi-instagram"></i></div>
+      <div class="footer-icons ml-3"><i class="bi bi-twitter"></i></div>
+      <div class="footer-icons ml-3"><i class="bi bi-facebook"></i></div>
+    </div>
+    <div class="row mx-5 my-4 bottom-footer-2">
+      <p class="mr-2 my-0">Legal</p>
+      <p class="mr-2 my-0">Privacy Center</p>
+      <p class="mr-2 my-0">Privacy Policy</p>
+      <p class="mr-2 my-0">Cookies</p>
+      <p class="mr-2 my-0">About Ads</p>
+      <p class="ml-auto my-0">© 2023 Spotify AB</p>
+    </div>
 `
             getTracklist()
         } else {
             console.log(res)
         }
     } catch (err) {
+        setInterval(1000, location.reload())
         console.log(err)
     }
 }
@@ -92,7 +169,7 @@ const getTracklist = async () => {
         let resData = resJson.data
         if (res.ok) {
             console.log(resData)
-            
+
             resData.forEach(function callback(element, index) {
                 tracksNode.innerHTML += `
                     <tr>
@@ -102,16 +179,17 @@ const getTracklist = async () => {
                         <th scope="col">${element.album.id}</th>
                         <th scope="col">${Math.floor(element.duration / 60 * 100) / 100}</th>
                     </tr>`
-                    
+
             });
             changeBottom(resData)
         } else {
             console.log(res)
         }
     } catch (err) {
+        setInterval(1000, location.reload())
         console.log(err)
     }
-    
+
 }
 
 function changeBottom(data) {
@@ -124,12 +202,12 @@ function changeBottom(data) {
     let audioPlayerContainer = document.getElementById("audio-player")
 
     console.log(numbersToChange)
-    
-    
-    
+
+
+
     for (let i = 0; i < numbersToChange.length; i++) {
-            console.log(numbersToChange[i])
-            numbersToChange[i].addEventListener("click", function () {
+        console.log(numbersToChange[i])
+        numbersToChange[i].addEventListener("click", function () {
             songNameContainer.innerText = data[i].title
             audioPlayerContainer.setAttribute("src", data[i].preview)
             albumArtContainer.setAttribute("src", data[i].album.cover_big)

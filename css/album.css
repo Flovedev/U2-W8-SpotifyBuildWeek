@@ -3,6 +3,23 @@ body {
     position: relative;
 }
 
+#main::-webkit-scrollbar {
+    width: 12px;
+}
+
+#main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#main::-webkit-scrollbar-thumb {
+    background-color: #909090;
+    border-radius: 20px;
+}
+
+#navbar-left a:hover {
+    text-decoration: none;
+}
+
 .arrows {
     color: white;
     background-color: black;
@@ -183,7 +200,7 @@ tbody tr:hover {
 }
 
 p a {
-    color:grey;
+    color: grey;
 }
 
 tbody tr:hover p a {
@@ -333,16 +350,16 @@ span {
     color: #808080;
 }
 
-#filled-heart{
+#filled-heart {
     color: rgb(43, 223, 104);
 }
 
-#audio-player{
+#audio-player {
     min-width: 600px;
     background-color: transparent;
 }
 
-div > a {
+div>a {
     color: rgb(127, 127, 127);
 }
 
