@@ -62,17 +62,19 @@ window.onload = async () => {
 				let element = potatojson[i];
 
 				albumCardNode1.innerHTML += `
-				<a href="./album.html?album=${element.album.id}">
-					<div class="col-lg-4 flex-grow-1">
-						<div class="card mb-3" style="width: 470px; background-color: #312728;">
-							<div class="row no-gutters">
-								<div class="col-4 d-inline-block">
+				<div class="col-lg-4 flex-grow-1">
+					<div class="card mb-3" style="max-width: 470px; background-color: #312728;">
+						<div class="row no-gutters">
+							<div class="col-4 d-inline-block">
+								<a class="text-decoration-none" href="./album.html?album=${element.album.id}">
 									<img style="width: 90px;" src="${albumImg[i]}" alt="...">
-								</div>
-						<div class="col-md-8 d-flex justify-content-start align-items-center">
-							<div class="card-body d-flex align-items-center p-0">
-							<h6 class="card-title m-0 text-elipsis">${albumNames[i]}</h6>
-								<div class="play-button ml-auto" onclick="this.classList.toggle('active')">
+								</a>
+							</div>
+							<div class="col-md-8 d-flex justify-content-start align-items-center">
+								<a  class="text-decoration-none" href="./album.html?album=${element.album.id}">
+									<h6 class="card-title  m-0 text-elipsis">${albumNames[i]}</h6>
+								</a>
+								<div class="play-button1 ml-auto" onclick="this.classList.toggle('active')">
 									<div class="fondo" x="0" y="0"></div>
 									<div class="icono ml-auto">
 										<div class="parte izquierda" x="0" y="0" width="100" height="100" fill="#fff"></div>
@@ -84,7 +86,8 @@ window.onload = async () => {
 							</div>
 						</div>
 					</div>
-				</a>`
+					`
+
 			} else {
 				break;
 			}
@@ -94,32 +97,32 @@ window.onload = async () => {
 			if (i < 6) {
 				let element = potatojson[i];
 
-				albumCardNode2.innerHTML += `<a href="./album.html?album=${albumId[i]}"><div class="col-lg-3">
-		<div class="card mb-3" style="width: 470px; background-color: #312728;">
-			<div class="row no-gutters">
-				<div class="col-4 d-inline-block">
-					<img style="width: 90px;"
-						src="${albumImg[i]}"
-						alt="...">
-				</div>
-				<div class="col-md-8 d-flex justify-content-start align-items-center">
-					<div class="card-body d-flex align-items-center p-0">
-						<h6 class="card-title m-0 text-elipsis">${albumNames[i]}</h6>
-						<div class="play-button ml-auto" onclick="this.classList.toggle('active')">
-							<div class="fondo" x="0" y="0"></div>
-							<div class="icono ml-auto">
-								<div class="parte izquierda" x="0" y="0" width="100" height="100"
-									fill="#fff"></div>
-								<div class="parte derecha" x="0" y="0" width="100" height="100"
-									fill="#fff"></div>
+				albumCardNode2.innerHTML += `
+				<div class="col-lg-4 flex-grow-1">
+					<div class="card mb-3" style="max-width: 470px; background-color: #312728;">
+						<div class="row no-gutters">
+							<div class="col-4 d-inline-block">
+								<a class="text-decoration-none" href="./album.html?album=${albumId[i]}">
+									<img style="width: 90px;" src="${albumImg[i]}" alt="...">
+								</a>
+							</div>
+							<div class="col-md-8 d-flex justify-content-start align-items-center">
+								<a  class="text-decoration-none" href="./album.html?album=${albumId[i]}">
+									<h6 class="card-title  m-0 text-elipsis">${albumNames[i]}</h6>
+								</a>
+								<div class="play-button1 ml-auto" onclick="this.classList.toggle('active')">
+									<div class="fondo" x="0" y="0"></div>
+									<div class="icono ml-auto">
+										<div class="parte izquierda" x="0" y="0" width="100" height="100" fill="#fff"></div>
+											<div class="parte derecha" x="0" y="0" width="100" height="100" fill="#fff"></div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</a>`
+					`
 			} else {
 				break;
 			}
@@ -137,7 +140,7 @@ window.onload = async () => {
 				alt="Card image cap">
 			<div class="card-body p-3">
 				<h6 id="recently-played-card-title1" class="card-title mb-1 text-truncate">${element.title}</h6>
-				<div class="play-button ml-auto bottom-right2"
+				<div class="play-button1 ml-auto bottom-right2"
 					onclick="this.classList.toggle('active')">
 					<div class="fondo" x="0" y="0"></div>
 					<div class="icono ml-auto">
@@ -165,7 +168,7 @@ window.onload = async () => {
 			alt="Card image cap">
 		<div class="card-body p-3">
 			<h6 id="recently-played-card-title1" class="card-title mb-1 text-truncate">${element.title}</h6>
-			<div class="play-button ml-auto bottom-right2"
+			<div class="play-button1 ml-auto bottom-right2"
 				onclick="this.classList.toggle('active')">
 				<div class="fondo" x="0" y="0"></div>
 				<div class="icono ml-auto">

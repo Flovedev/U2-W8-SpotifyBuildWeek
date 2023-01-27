@@ -160,8 +160,11 @@ const renderAlbum = async (data) => {
 
 function saveAlbum(data) {
     let save = document.getElementById("save-song-heart")
-    save.addEventListener("click", function () {
-        localStorage.setItem(data.id, data.title)
+    save.addEventListener("click",function(){
+    localStorage.setItem(data.id, data.title)
+    //save.classList.toggle("bi bi-heart-fill");
+    //save.classList.toggle("bi bi-heart");
+    
     })
 }
 
@@ -218,6 +221,13 @@ function changeBottom(data) {
             audioPlayer.setAttribute("src", data.tracks.data[i].preview)
         })
     }
+}
+
+function changeHeart() {
+    let heartNode = document.querySelector(".bi-heart");
+    heartNode.addEventListener("click", function () {
+        heartNode.classList.toggle("-fill");
+    });
 }
 
 window.onload = (
